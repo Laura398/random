@@ -20,7 +20,7 @@ export class Tab3Page {
       const json = await res.json()      
       this.joke = json[0].joke;
     } catch (error) {
-      console.error(error);
+      this.joke = 'An error occurred while fetching the joke.';
     }
   }
 

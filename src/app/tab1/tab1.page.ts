@@ -20,7 +20,8 @@ export class Tab1Page {
       this.quote = json[0].quote;
       this.author = json[0].author;
     } catch (error) {
-      console.error(error);
+      this.quote = 'An error occurred while fetching the quote.';
+      this.author = '';
     }
   }
 

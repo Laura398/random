@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Todays's randoms </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" text-center text-align: center>
+  <div
+    style="
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100%;
+      width: 90%;
+      margin: auto;
+      overflow: auto;
+    "
+  >
+    <ion-spinner name="bubbles" *ngIf="!isReady"></ion-spinner>
+
+    <ion-card *ngIf="isReady">
+      <ion-card-header>
+        <ion-card-subtitle style="font-size: large;">
+          Today's quote
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-card-content style="text-align: justify">
+          {{quote}}
+        </ion-card-content>
+        <ion-card-subtitle style="text-align: right">
+          {{author}}
+        </ion-card-subtitle>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="isReady">
+      <ion-card-header>
+        <ion-card-subtitle style="font-size: large;">
+          Today's fact
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-card-content style="text-align: justify">
+          {{fact}}
+        </ion-card-content>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="isReady">
+      <ion-card-header>
+        <ion-card-subtitle style="font-size: large;">
+          Today's joke
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-card-content style="text-align: justify">
+          {{joke}}
+        </ion-card-content>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+</ion-content>

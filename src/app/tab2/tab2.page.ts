@@ -19,7 +19,7 @@ export class Tab2Page {
       const json = await res.json()
       this.fact = json[0].fact;
     } catch (error) {
-      console.error(error);
+      this.fact = 'An error occurred while fetching the fact.';
     }
   }
 

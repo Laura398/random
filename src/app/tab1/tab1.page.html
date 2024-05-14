@@ -11,14 +11,13 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100%;
+      min-height: 100%;
       width: 90%;
       margin: auto;
+      overflow: auto;
     "
   >
-    <ion-item *ngIf="quote === ''">
-      <ion-spinner name="bubbles"></ion-spinner>
-    </ion-item>
+    <ion-spinner name="bubbles" *ngIf="quote === ''"></ion-spinner>
 
     <ion-card *ngIf="quote !== ''">
       <ion-card-content>
@@ -31,6 +30,8 @@
       </ion-card-content>
     </ion-card>
 
-    <ion-button color="light" (click)="getQuote()" *ngIf="quote !== ''">New quote</ion-button>
+    <ion-button color="light" (click)="getQuote()" *ngIf="quote !== ''"
+      >New quote</ion-button
+    >
   </div>
 </ion-content>
