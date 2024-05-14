@@ -1,17 +1,36 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-title> Today's quote </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" text-center text-align: center>
+  <div
+    style="
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 90%;
+      margin: auto;
+    "
+  >
+    <ion-item *ngIf="quote === ''">
+      <ion-spinner name="bubbles"></ion-spinner>
+    </ion-item>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+    <ion-card *ngIf="quote !== ''">
+      <ion-card-content>
+        <ion-card-content style="text-align: justify">
+          {{quote}}
+        </ion-card-content>
+        <ion-card-subtitle style="text-align: right">
+          {{author}}
+        </ion-card-subtitle>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-button color="light" (click)="getQuote()" *ngIf="quote !== ''">New quote</ion-button>
+  </div>
 </ion-content>
