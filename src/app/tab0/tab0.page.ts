@@ -58,7 +58,7 @@ export class Tab0Page implements OnInit {
 
   async ngOnInit() {
     await this.storage.create();
-    const todayDate = new Date().toDateString();
+    const todayDate = new Date().getDate();
     const dateInStorage = await this.storage.get('date');
 
     if (todayDate === dateInStorage) {
@@ -69,7 +69,7 @@ export class Tab0Page implements OnInit {
         this.storage.set('author', this.author);
       } else {
         this.quote = quote;
-        this.author = await this.storage.get('author') || '';
+        this.author = (await this.storage.get('author')) || '';
       }
 
       const fact = await this.storage.get('fact');
@@ -87,14 +87,27 @@ export class Tab0Page implements OnInit {
       } else {
         this.joke = joke;
       }
+      this.isReady = true;
     } else {
-      await Promise.all([this.getQuote, this.getFact, this.getJoke]);
-      this.storage.set('quote', this.quote);
-      this.storage.set('author', this.author);
-      this.storage.set('fact', this.fact);
-      this.storage.set('joke', this.joke);
+      this.isReady = false;
+      this.storage.clear();
+      await Promise.all([
+        (async () => {
+          await this.getQuote();
+          this.storage.set('quote', this.quote);
+          this.storage.set('author', this.author);
+        })(),
+        (async () => {
+          await this.getFact();
+          this.storage.set('fact', this.fact);
+        })(),
+        (async () => {
+          await this.getJoke();
+          this.storage.set('joke', this.joke);
+        })(),
+      ]);
       this.storage.set('date', todayDate);
+      if (this.quote && this.fact && this.joke) this.isReady = true;
     }
-    this.isReady = true;
   }
 }
