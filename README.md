@@ -1,16 +1,3 @@
-
-
-ionic cap copy 
-ionic cap sync   
-ionic cap open android
-
-npm run build
-npx cap copy && npx cap sync
-npx cap open android
-
-
-
-
 <h1 align="center">Useless Randoms</h1>
 
 <div align="center">
