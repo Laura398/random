@@ -21,6 +21,6 @@ An android application, also available as web application. All in English.
 
 ## Access
 
-The website is accessible here : https://www.portfolio.lauramathieu.com/
+The website is accessible here : https://useless-randoms.lauramathieu.com/
 
 Thank you for visiting!
